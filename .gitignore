@@ -1,0 +1,14 @@
+# venv folder
+venv/
+.venv
+env/
+.env
+local.env
+
+# VS code
+.vscode
+
+# Logs
+*.log
+
+lesson_4/generators/rockyou.txt

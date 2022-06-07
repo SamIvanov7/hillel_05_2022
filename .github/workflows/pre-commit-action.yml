@@ -1,0 +1,22 @@
+# building my own actions workflow to check code with black, isort and flake8
+name: pre-commit-action
+
+on:
+  push:
+    branches: [main]
+    
+jobs:
+  code-formatter-checker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip install -r requirements.txt
+      - name: Checking code
+      - uses: black, isort
+      - run: black --check ./ && isort --check-only ./
+      - name: Fixing mistakes
+      - uses: black, isort, flake8
+      - run: black ./ && isort ./ && flake8 ./
+      - name: Job status
+      - run: echo "This job status is ${{ job.status }}."

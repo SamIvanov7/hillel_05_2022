@@ -20,7 +20,7 @@ from lib import answer
 #     def update_player(num: int) -> None:
 #       ...
 
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # P.S.   players-repr == playerReprFunc
 

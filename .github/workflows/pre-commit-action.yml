@@ -18,9 +18,6 @@ jobs:
     - name: install 
       run : pip install -r requirements.txt
       
-    - name: blackcheck
-      uses: jpetrucciani/black-check@master
-      
     - name: isort
       uses: isort/isort-action@master
       with:

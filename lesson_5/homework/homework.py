@@ -39,7 +39,9 @@ def log(message: str) -> None:
 
 
 def playerAddingFunc(name: str, age: int, numb: int):
-    playerNew: dict[str, int, int] = {"name": name, "age": age, "number": numb}
+    playerNew: dict[str, int, int] = {
+        "name": name, "age": age, "number": numb
+        }
 
     if playerNew["number"] in [playerTmp["number"] for playerTmp in team]:
         log(message="This number is already taken. Choose another one")

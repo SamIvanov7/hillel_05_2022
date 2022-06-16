@@ -14,10 +14,14 @@ jobs:
     
     - name: Clone repository
       uses: actions/checkout@v3 
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+        cache: 'pip'
       
-    - name: install 
+    - name: install deps
       run : pip install -r requirements.txt
-      
+
     - name: isort
       uses: isort/isort-action@master
       with:
@@ -25,3 +29,6 @@ jobs:
 
     - name: flake8
       uses: cclauss/Find-Python-syntax-errors-action@master
+
+    - name: run formatter
+      run : black --check ./

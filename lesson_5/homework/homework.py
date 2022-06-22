@@ -39,9 +39,7 @@ def log(message: str) -> None:
 
 
 def playerAddingFunc(name: str, age: int, numb: int):
-    playerNew: dict[str, int, int] = {
-        "name": name, "age": age, "number": numb
-        }
+    playerNew: dict[str, int, int] = {"name": name, "age": age, "number": numb}
 
     if playerNew["number"] in [playerTmp["number"] for playerTmp in team]:
         log(message="This number is already taken. Choose another one")
@@ -60,11 +58,7 @@ def playerRemFunc(playersList: list[dict], numb: int):
             log(message=f"You've just deleted {pl_name}")
 
 
-def playerReprFunc(
-                playersList: list[dict],
-                sorter: bool = False,
-                key: str = "number"
-                ):
+def playerReprFunc(playersList: list[dict], sorter: bool = False, key: str = "number"):
     if sorter:
         for pl in sorted(playersList, key=lambda x: x[key]):
             print(f"\t {pl['name']}, age :{pl['age']}, #  {pl['number']}")

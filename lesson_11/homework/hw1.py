@@ -22,11 +22,10 @@ def gen_rand_numbers():
 
 def main():
     thread1 = Thread(target=gen_rand_numbers, args=list_rand_numbers)
-    thread2 = Thread(target=summary, args=(list_rand_numbers,))
-    thread3 = Thread(target=mid_average, args=(list_rand_numbers,))
-
     thread1.start()
     thread1.join()
+    thread2 = Thread(target=summary, args=(list_rand_numbers,))
+    thread3 = Thread(target=mid_average, args=(list_rand_numbers,))
     thread2.start()
     thread3.start()
     thread2.join()

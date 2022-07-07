@@ -26,6 +26,8 @@ from time import perf_counter
 # TODO: Make this function asyncronous to compute less numbers faster
 
 start_time = perf_counter()
+
+
 async def get_primes_amount(num: int) -> int:
     res = 1
     for i in range(2, num + 1):

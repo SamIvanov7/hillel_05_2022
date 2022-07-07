@@ -1,8 +1,6 @@
 from random import randint
 from threading import Thread
 
-from hw1_calc_services import mid_average, summary
-
 # When the application starts, three threads (T1, T2, T3) are launched
 
 #     T1 thread fills the list with random numbers (10_000 elements)
@@ -12,25 +10,36 @@ from hw1_calc_services import mid_average, summary
 #     T2 thread finds the arithmetic avarage of the elements of the list
 #     The resulting lists are displayed
 
-list_rand_numbers = []
+
+class GetPrimes3Threads:
+    def __init__(self) -> None:
+        self.numbers = []
+        self.summ = 0
+        self.average = 0
+
+    def gen_rand_numbers(self):
+        self.numbers = [randint(0, 100) for i in range(10_000)]
+
+    def summary(self):
+        self.summ = sum(self.numbers)
+
+    def get_average(self):
+        self.average = sum(self.numbers) / len(self.numbers)
+
+    def __str__(self) -> str:
+        return f"The summary is {self.summ}, The average is {self.average}"
 
 
-def gen_rand_numbers():
-    for i in range(10_000):
-        list_rand_numbers.append(randint(0, 100))
+my_threads = GetPrimes3Threads()
 
+thread1 = Thread(target=my_threads.gen_rand_numbers())
+thread2 = Thread(target=my_threads.summary())
+thread3 = Thread(target=my_threads.get_average())
 
-def main():
-    thread1 = Thread(target=gen_rand_numbers, args=list_rand_numbers)
-    thread1.start()
-    thread1.join()
-    thread2 = Thread(target=summary, args=(list_rand_numbers,))
-    thread3 = Thread(target=mid_average, args=(list_rand_numbers,))
-    thread2.start()
-    thread3.start()
-    thread2.join()
-    thread3.join()
+thread1.start()
+thread1.join()
 
+thread2.start()
+thread3.start()
 
-if __name__ == "__main__":
-    main()
+print(my_threads)

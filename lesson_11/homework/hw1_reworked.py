@@ -1,12 +1,13 @@
-from threading import Thread
 from random import randint
+from threading import Thread
 
-class GetPrimes3Threads():
+
+class GetPrimes3Threads:
     def __init__(self) -> None:
         self.numbers = []
         self.summ = 0
         self.average = 0
-    
+
     def gen_rand_numbers(self):
         self.numbers = [randint(0, 100) for i in range(10_000)]
 
@@ -17,7 +18,8 @@ class GetPrimes3Threads():
         self.average = sum(self.numbers) / len(self.numbers)
 
     def __str__(self) -> str:
-        return f'The summary is {self.summ}, The average is {self.average}'
+        return f"The summary is {self.summ}, The average is {self.average}"
+
 
 my_threads = GetPrimes3Threads()
 

@@ -1,4 +1,5 @@
 import asyncio
+from time import perf_counter
 
 # def get_primes_amount(num: int) -> int:
 #     result = 0
@@ -24,7 +25,7 @@ import asyncio
 # TODO: Complete get_primes_amount function
 # TODO: Make this function asyncronous to compute less numbers faster
 
-
+start_time = perf_counter()
 async def get_primes_amount(num: int) -> int:
     res = 1
     for i in range(2, num + 1):
@@ -52,3 +53,5 @@ tasks = [
 loop = asyncio.get_event_loop()
 loop.run_until_complete(asyncio.gather(*tasks))
 loop.close()
+end_time = perf_counter()
+print(end_time - start_time)

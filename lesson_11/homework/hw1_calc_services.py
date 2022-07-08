@@ -1,5 +1,5 @@
-from random import randint
-from threading import Thread
+# from random import randint
+# from threading import Thread
 
 
 # async def gen_rand_numbers():

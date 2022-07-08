@@ -3,7 +3,11 @@ from threading import Thread
 
 
 class GetPrimes3Threads:
+
+    numbers = []
+
     def __init__(self) -> None:
+
         self.numbers = []
         self.summ = 0
         self.average = 0
@@ -15,6 +19,7 @@ class GetPrimes3Threads:
         self.summ = sum(self.numbers)
 
     def get_average(self):
+        print(len(self.numbers))
         self.average = sum(self.numbers) / len(self.numbers)
 
     def __str__(self) -> str:
@@ -28,12 +33,8 @@ thread2 = Thread(target=my_threads.summary())
 thread3 = Thread(target=my_threads.get_average())
 
 thread1.start()
-print(f"thread status: {thread1.is_alive()}")
 thread1.join()
-print(f"thread status: {thread1.is_alive()}")
-
 thread2.start()
-print(f"thread status: {thread2.is_alive()}")
 thread3.start()
 
 print(my_threads)

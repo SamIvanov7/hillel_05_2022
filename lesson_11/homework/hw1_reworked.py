@@ -1,38 +1,43 @@
-from random import randint
+import random
 from threading import Thread
 
-
-class GetPrimes3Threads:
-    def __init__(self) -> None:
-        self.numbers = []
-        self.summ = 0
-        self.average = 0
-
-    def gen_rand_numbers(self):
-        self.numbers = [randint(0, 100) for i in range(10_000)]
-
-    def summary(self):
-        self.summ = sum(self.numbers)
-
-    def get_average(self):
-        self.average = sum(self.numbers) / len(self.numbers)
-
-    def __str__(self) -> str:
-        return f"The summary is {self.summ}, The average is {self.average}"
+numbers = []
 
 
-my_threads = GetPrimes3Threads()
+def random_numbers():
+    for i in range(10_000):
+        numbers.append(random.randint(0, 10_000))
 
-thread1 = Thread(target=my_threads.gen_rand_numbers())
-thread2 = Thread(target=my_threads.summary())
-thread3 = Thread(target=my_threads.get_average())
 
-thread1.start()
-print(f"thread status: {thread1.is_alive()}")
-thread1.join()
-print(f"thread status: {thread1.is_alive()}")
+def summ(numbers) -> int:
+    counter = 0
+    for i in numbers:
+        counter += i
+    print(f"The summary is {counter}")
 
-thread2.start()
-thread3.start()
 
-print(my_threads)
+def mid_avarage(numbers):
+    counter = 0
+    for i in numbers:
+        counter += i
+    print(f"The mid_avarage is {counter / len(numbers)}")
+
+
+def main():
+    t1 = Thread(target=random_numbers)
+    t1.start()
+    t1.join()
+    if t1.is_alive() is False:
+        print(
+            f"Thread1 has ended, list is completely filled and it length is: {len(numbers)}"
+        )
+        t2 = Thread(target=summ, args=(numbers,))
+        t3 = Thread(target=mid_avarage, args=(numbers,))
+        t2.start()
+        t3.start()
+        t2.join()
+        t3.join()
+
+
+if __name__ == "__main__":
+    main()

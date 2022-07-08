@@ -6,8 +6,8 @@ import httpx
 import requests
 
 BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
-MAX_POKEMON = 30
-SIZE = 10
+MAX_POKEMON = 100
+SIZE = 1000
 
 # import grequests
 # urls = [get_random_pokemon_url() for _ in range(SIZE)]

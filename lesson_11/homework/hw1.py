@@ -1,15 +1,6 @@
 from random import randint
 from threading import Thread
 
-# When the application starts, three threads (T1, T2, T3) are launched
-
-#     T1 thread fills the list with random numbers (10_000 elements)
-#     T2 and T3 threads are waiting when the list is filled
-#     When the list is full T2 and T3 are started
-#     T2 thread finds the sum of the elements of the list
-#     T2 thread finds the arithmetic avarage of the elements of the list
-#     The resulting lists are displayed
-
 
 class GetPrimes3Threads:
     def __init__(self) -> None:
@@ -37,9 +28,12 @@ thread2 = Thread(target=my_threads.summary())
 thread3 = Thread(target=my_threads.get_average())
 
 thread1.start()
+print(f"thread status: {thread1.is_alive()}")
 thread1.join()
+print(f"thread status: {thread1.is_alive()}")
 
 thread2.start()
+print(f"thread status: {thread2.is_alive()}")
 thread3.start()
 
 print(my_threads)

@@ -28,7 +28,9 @@ thread2 = Thread(target=my_threads.summary())
 thread3 = Thread(target=my_threads.get_average())
 
 thread1.start()
+print(f"thread status: {thread1.is_alive()}")
 thread1.join()
+print(f"thread status: {thread1.is_alive()}")
 
 thread2.start()
 thread3.start()

@@ -4,6 +4,7 @@ import time
 import aiohttp
 
 start_time = time.time()
+print("=" * 70)
 
 
 async def get_pokemon(my_session, pokemon_url):
@@ -22,7 +23,7 @@ async def main():
             tasks.append(asyncio.create_task(get_pokemon(my_session, pokemon_url)))
 
         pokemons = await asyncio.gather(*tasks)
-    print(pokemons)
+    print(f"Our pokemons: {pokemons}")
 
 
 asyncio.run(main())

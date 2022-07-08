@@ -45,7 +45,7 @@ async def main():
     async with aiohttp.ClientSession() as my_session:
 
         tasks = []
-        for _ in range(1, 50):
+        for _ in range(SIZE):
             pokemon_url = get_random_pokemon_url()
             tasks.append(asyncio.create_task(get_pokemon(my_session, pokemon_url)))
 
